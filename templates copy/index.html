@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Sharing App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">🌍 Recipe Sharing</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero bg-light text-center py-5">
+        <h1>Search Recipes</h1>
+        <p class="lead">Discover recipes from around the globe!</p>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Search Section (left) -->
+            <div class="col-md-6">
+                <form action="/search" method="get" class="mt-3">
+                    <div class="mb-3">
+                        <label for="searchQuery" class="form-label">Search for a recipe</label>
+                        <input type="text" class="form-control" id="searchQuery" name="query" placeholder="Enter keyword or cuisine">
+                    </div>
+                    <button type="submit" class="btn btn-info w-100">Search</button>
+                </form>
+            </div>
+
+            <!-- Upload Section (right) -->
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Upload Your Recipe</h5>
+                        <form action="/upload" method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="recipeName" class="form-label">Recipe Name</label>
+                                <input type="text" class="form-control" id="recipeName" name="recipe_name" placeholder="Enter recipe name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipeImage" class="form-label">Upload Image</label>
+                                <input type="file" class="form-control" id="recipeImage" name="recipe_image">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipeDescription" class="form-label">Description</label>
+                                <textarea class="form-control" id="recipeDescription" name="recipe_description" rows="3" placeholder="Enter description"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Upload Recipe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-primary text-white text-center py-3 mt-5">
+        <p>&copy; 2024 Recipe Sharing App. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

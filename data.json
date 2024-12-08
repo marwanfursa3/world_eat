@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Rice",
+        "description": "A versatile grain used in various global cuisines.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Rice_plant_in_field.jpg"
+    },
+    {
+        "name": "Pizza",
+        "description": "A popular Italian dish topped with cheese, tomato sauce, and various toppings.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Pizza.jpg"
+    },
+    {
+        "name": "Pasta",
+        "description": "A staple food of Italian cuisine made from wheat and water.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Pasta_2.jpg"
+    },
+    {
+        "name": "marwan",
+        "description": "aaaa\r\n",
+        "image": "/static/uploads/Screenshot 2024-10-10 at .17.png"
+    },
+    {
+        "name": "avraham",
+        "description": "fhjjvndmkvmfd",
+        "image": "/static/uploads/Screenshot 2024-05-01 at 17.png"
+    }
+]

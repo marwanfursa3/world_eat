@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Sharing App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">🌍 Recipe Sharing</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero bg-light text-center py-5">
+        <h1>Search Recipes</h1>
+        <p class="lead">Discover recipes from around the globe!</p>
+        <form action="/search" method="get" class="mt-3">
+            <div class="mb-3">
+                <label for="searchQuery" class="form-label">Search for a recipe</label>
+                <input type="text" class="form-control" id="searchQuery" name="query" placeholder="Enter keyword or cuisine">
+            </div>
+            <button type="submit" class="btn btn-info w-100">Search</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white text-center py-3 mt-5">
+        <p>&copy; 2024 Recipe Sharing App. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+from flask import Flask, render_template, request
+import json
+
+app = Flask(__name__)
+
+
+# Route to render index.html
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+# Route for search
+@app.route("/search")
+def search():
+    query = request.args.get("query", "").strip().lower()  # מקבל את המחרוזת שהוזנה ומוודא שאין רווחים
+    try:
+        # קורא את המידע מקובץ JSON
+        with open("data.json", "r", encoding="utf-8") as file:
+            data = json.load(file)  # טוען את המידע
+        # מסנן את התוצאות כך שיתאימו לשאילתה שהוזנה
+        results = [
+            item for item in data if query in item["name"].lower()
+        ]
+    except Exception as e:
+        print("Error loading data:", e)
+        results = []
+
+    print("Query:", query)  # הדפסת המחרוזת לשם אבחנה
+    print("Results:", results)  # הדפסת התוצאות לשם אבחנה
+
+    return render_template("search.html", results=results, query=query)
+
+if __name__ == "__main__":
+    app.run(debug=True)
